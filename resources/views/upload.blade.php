@@ -15,11 +15,14 @@
             </div>
             @endif
 
-            @if ($message = Session::get('error'))
+            @if ($message = Session::get('error') || $errors->any())
             <div class="alert alert-danger d-flex align-items-center" role="alert">
                 <div>
                     {{ $message }}
                 </div>
+                @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+                @endforeach
             </div>
             @endif
         </div>
