@@ -18,7 +18,7 @@ class ShowFilesController extends Controller
         }
 
         $files = File::orderBy($sortBy, 'asc')->get();
-
+        // Сортировку можно было сделать также с помощью таблиц на JS 
         return view('files', [
             "title" => "Просмотр файлов",
             "files" => $files
