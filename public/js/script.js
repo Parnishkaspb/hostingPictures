@@ -1,5 +1,3 @@
-import './bootstrap';
-
 $(document).ready(function () {
     $('#uploadForm').submit(function (e) {
         var files = $('#files')[0].files;
