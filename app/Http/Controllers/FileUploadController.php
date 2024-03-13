@@ -13,13 +13,12 @@ class FileUploadController extends Controller
 
     public function fileUpload(FileUploadRequest $request)
     {
-        $files = $request->file('files');
-        if (count($files) > 5) {
-            return back()
-                ->with('error', 'Загрузить на сервер за один раз можно не больше 5 файлов!');
-        }
-
         if ($request->hasFile('files')) {
+            $files = $request->file('files');
+            if (count($files) > 5) {
+                return back()
+                    ->with('error', 'Загрузить на сервер за один раз можно не больше 5 файлов!');
+            }
             foreach ($files as $file) {
                 $file_name_without_extension = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                 $file_extension = $file->getClientOriginalExtension();
@@ -46,7 +45,7 @@ class FileUploadController extends Controller
         }
 
         return back()
-            ->with('error', 'Произошла ошибка с загрузкой файлов на сервер');
+            ->with('error', 'Выберите хотя бы 1 файл для загрузки');
     }
 
     protected function transliterateAndLowerCast($text)
