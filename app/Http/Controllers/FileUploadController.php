@@ -39,6 +39,7 @@ class FileUploadController extends Controller
 
             File::create([
                 'name_file' => $file_name,
+                'extension_file' => $file_extension,
             ]);
         }
 
